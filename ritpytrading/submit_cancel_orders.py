@@ -30,7 +30,7 @@ def market_order(ses, ticker, side, quantity):
         orderId = mkt_order['order_id']
         print('%s %s Market order was submitted and has ID %d' %
               (side, quantity, orderId))
-    if response.status_code == 429:
+    elif response.status_code == 429:
         print('Error: Orders submitted too frequently.')
     else:
         raise ApiException('Authorization Error: Please check API key.')
