@@ -47,8 +47,8 @@ def limit_order(ses, ticker, side, quantity, price):
     if response.ok:
         lim_order = response.json()
         orderId = lim_order['order_id']
-        print("%s %s Limit order was submitted and has ID %d " %
-              (side, quantity, orderId))
+        #print("%s %s Limit order was submitted and has ID %d " %
+        #      (side, quantity, orderId))
     elif response.status_code == 429:
         print('Error: Orders submitted too frequently.')
     else:
@@ -64,11 +64,11 @@ def cancel_order(ses, order_id):
         status = response.json()
         success = status['success']
         if success:
-            print('Order ' + str(order_id) + ' was successfully cancelled.')
+        #    print('Order ' + str(order_id) + ' was successfully cancelled.')
         else:
-            print('Order ' + str(order_id) + ' was not successfully cancelled.')
+        #    print('Order ' + str(order_id) + ' was not successfully cancelled.')
     elif response.json()['code'] == "ORDER_NOT_FOUND":
-        print("Order " + str(order_id) + " not found, not cancelled.")
+        #print("Order " + str(order_id) + " not found, not cancelled.")
     else:
         print(response.json())
         raise ApiException('Authorization Error: Please check API key.')
