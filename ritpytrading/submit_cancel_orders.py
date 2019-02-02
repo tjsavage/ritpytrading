@@ -25,6 +25,7 @@ def market_order(ses, ticker, side, quantity):
     mkt_order_params = {'ticker': ticker, 'type': 'MARKET',
                         'quantity': quantity, 'action': side}
     response = ses.post(base_url + '/orders', params=mkt_order_params)
+    print(mkt_order_params)
     if response.ok:
         mkt_order = response.json()
         orderId = mkt_order['order_id']
@@ -33,6 +34,7 @@ def market_order(ses, ticker, side, quantity):
     elif response.status_code == 429:
         print('Error: Orders submitted too frequently.')
     else:
+        print(response.status_code)
         raise ApiException('Authorization Error: Please check API key.')
 
 def limit_order(ses, ticker, side, quantity, price):
