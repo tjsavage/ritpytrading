@@ -50,6 +50,7 @@ def limit_order(ses, ticker, side, quantity, price):
     elif response.status_code == 429:
         print('Error: Orders submitted too frequently.')
     else:
+        print(response.json())
         raise ApiException('Authorization Error: Please check API key.')
 
 def cancel_order(ses, order_id):
@@ -61,9 +62,9 @@ def cancel_order(ses, order_id):
         status = response.json()
         success = status['success']
         if success:
-            print('Order ' + order_id + ' was successfully cancelled.')
+            print('Order ' + str(order_id) + ' was successfully cancelled.')
         else:
-            print('Order ' + order_id + ' was not successfully cancelled.')
+            print('Order ' + str(order_id) + ' was not successfully cancelled.')
     else:
         raise ApiException('Authorization Error: Please check API key.')
 
