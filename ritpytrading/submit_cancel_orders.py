@@ -67,7 +67,10 @@ def cancel_order(ses, order_id):
             print('Order ' + str(order_id) + ' was successfully cancelled.')
         else:
             print('Order ' + str(order_id) + ' was not successfully cancelled.')
+    elif response.json()['code'] == "ORDER_NOT_FOUND":
+        print("Order " + str(order_id) + " not found, not cancelled.")
     else:
+        print(response.json())
         raise ApiException('Authorization Error: Please check API key.')
 
 # if all_flag = 1 then all open orders are cancelled
