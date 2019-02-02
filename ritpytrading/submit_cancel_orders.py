@@ -65,10 +65,13 @@ def cancel_order(ses, order_id):
         success = status['success']
         if success:
         #    print('Order ' + str(order_id) + ' was successfully cancelled.')
+            pass
         else:
         #    print('Order ' + str(order_id) + ' was not successfully cancelled.')
+            pass
     elif response.json()['code'] == "ORDER_NOT_FOUND":
         #print("Order " + str(order_id) + " not found, not cancelled.")
+        pass
     else:
         print(response.json())
         raise ApiException('Authorization Error: Please check API key.')
